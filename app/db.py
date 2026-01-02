@@ -30,6 +30,6 @@ async def create_db_and_tables():
     async with engine.begin() as conn: #starts database engine connection
         await conn.run_sync(Base.metadata.create_all) #creates tables based on models
 
-async def get_assync_session() -> AsyncGenerator[AsyncSession, None]: #provides a database session
+async def get_async_session() -> AsyncGenerator[AsyncSession, None]: #provides a database session
     async with async_session_maker() as session: #creates a new session
         yield session #yields the session for use
