@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 app = FastAPI()
 
@@ -14,4 +14,6 @@ def get_all_posts():
 
 @app.get("/posts/{id}")
 def get_post(id: int):
+    if id not in text_posts:
+            raise HTTPException(status_code=404, detail="Post not found")
     return text_posts.get(id)
