@@ -2,6 +2,12 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/hello-world")
-def hello_world():
-    return {"message": "Hello World"} #json -> java script object notation (USE DICT) valid python dict = valid json
+text_posts = {"1": {"title": "First Post", "content": "This is the first post."}
+              , "2": {"title": "Second Post", "content": "This is the second post."
+                    }
+              , "3": {"title": "Third Post", "content": "This is the third post."}
+              }
+
+@app.get("/posts")
+def get_all_posts():
+    return text_posts
